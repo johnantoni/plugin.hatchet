@@ -1,14 +1,6 @@
 # Hatchet-harry
 module HatchetHarry
 
-  def clear_cache
-    cache_dir = ActionController::Base.page_cache_directory
-    unless cache_dir == RAILS_ROOT+"/public"
-      FileUtils.rm_r(Dir.glob(cache_dir+"/*")) rescue Errno::ENOENT
-      RAILS_DEFAULT_LOGGER.info("Cache directory '#{cache_dir}' fully sweeped.")
-    end
-  end
-
   def sql_days_start(m, y, b)
     return b+y+"-"+m+"-01"+b
   end
@@ -25,38 +17,6 @@ module HatchetHarry
 
   def nl2br(str)
        str.gsub(/\n/, '<br>')
-  end
-
-  def ping_pingomatic(uri)
-    if ENV['RAILS_ENV'] == 'production'
-      require 'net/http'
-      require 'uri'
-      include ActionController::UrlWriter
-
-      enc_uri = URI.escape(uri)
-
-      #ping pingomatic
-      ping_url = "pingomatic.com"
-      ping_vars = "/ping/?title=&blogurl=#{enc_uri}&rssurl=http%3A%2F%2F&chk_weblogscom=on&chk_blogs=on&chk_technorati=on&chk_feedburner=on&chk_syndic8=on&chk_newsgator=on&chk_myyahoo=on&chk_pubsubcom=on&chk_blogdigger=on&chk_blogstreet=on&chk_moreover=on&chk_weblogalot=on&chk_icerocket=on&chk_newsisfree=on&chk_topicexchange=on"
-
-      Net::HTTP.get(ping_url, ping_vars)
-    end
-  end
-
-  def ping_sitemap(uri)
-    if ENV['RAILS_ENV'] == 'production'
-      require 'net/http'
-      require 'uri'
-      include ActionController::UrlWriter
-
-      uri = uri+'/sitemap.xml'
-
-      enc_uri = URI.escape(uri)
-      default_url_options[:host] = enc_uri
-
-      #ping sitemap
-      Net::HTTP.get('www.google.com' , '/ping?sitemap=' + enc_uri)
-    end
   end
 
   def call_rake(task, options = {})
