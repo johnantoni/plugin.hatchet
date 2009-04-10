@@ -16,7 +16,7 @@ module HatchetHarry
     end
 
     def nl2br(str)
-          str.gsub(/\n/, '<br>')
+      str.gsub(/\n/, '<br>')
     end
 
     def call_rake(task, options = {})
@@ -53,9 +53,9 @@ module HatchetHarry
     end
 
     def strip_object_tag
-        self.gsub(/<object(| [^>]*)>/i, ' Flash Video ')
-        #self.gsub(/<param(| [^>]*)>/i, ' ')
-        #self.gsub(/<embed(| [^>]*)>/i, ' ')
+      self.gsub(/<object(| [^>]*)>/i, ' Flash Video ')
+      #self.gsub(/<param(| [^>]*)>/i, ' ')
+      #self.gsub(/<embed(| [^>]*)>/i, ' ')
     end
 
     def text_filter(body, filter_id)
