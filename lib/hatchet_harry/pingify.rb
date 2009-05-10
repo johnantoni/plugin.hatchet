@@ -2,8 +2,6 @@ module HatchetHarry
   module Pingify
 
     include ActionController::UrlWriter
-    require 'net/http'
-    require 'uri'
 
     def send_pingomatic(uri)
       if ENV['RAILS_ENV'] == 'production'
@@ -31,3 +29,4 @@ module HatchetHarry
 
   end
 end
+

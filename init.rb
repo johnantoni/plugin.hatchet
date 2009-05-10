@@ -1,12 +1,11 @@
-# Include hook code here
-#ActionView::Base.send(:include, HatchetHarry)
-#ActiveRecord::Base.send(:include, HatchetHarry)
-#ActionController::Base.send(:include, HatchetHarry)
+#toolkit
+require 'rdiscount'
+require 'redcloth'
 
-#require File.dirname(__FILE__) + '/lib/hatchet_harry'
+#pingify
+require 'net/http'
+require 'uri'
 
-#ActionController::Base.send(:include, HatchetHarry::Pingify)
+#load
+require 'hatchet_harry'
 
-#ActionController::Base.class_eval do
-#  include HatchetHarry::Pingify
-#end

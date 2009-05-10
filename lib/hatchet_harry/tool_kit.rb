@@ -54,8 +54,6 @@ module HatchetHarry
 
     def strip_object_tag
       self.gsub(/<object(| [^>]*)>/i, ' Flash Video ')
-      #self.gsub(/<param(| [^>]*)>/i, ' ')
-      #self.gsub(/<embed(| [^>]*)>/i, ' ')
     end
 
     def text_filter(body, filter_id)
@@ -64,7 +62,6 @@ module HatchetHarry
           return body.to_s
         when 2
           return RDiscount.new(body).to_html
-          #return BlueCloth.new(body).to_html
         when 3
           return RedCloth.new(body).to_html
       end
@@ -88,3 +85,4 @@ module HatchetHarry
 
   end
 end
+
